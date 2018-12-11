@@ -283,7 +283,8 @@ def demo(target_test, thresh):
             continue
         cv2.rectangle(im, (int(dets[0][i, 0]), int(dets[0][i, 1])),
                       (int(dets[0][i, 2]), int(dets[0][i, 3])), (0, 255, 0), 2)
-    cv2.imwrite('/tmp/demo_res.jpg', im)
+    print(os.getcwd())
+    cv2.imwrite('demo_res.jpg', im)
     return None
 
 

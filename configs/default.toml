@@ -24,7 +24,7 @@ PORT = 8889
 DIAGNOSE = ""
 
 [MODEL.DIFFERENT_DILATION]
-ENABLE = false
+ENABLE = true
 
 [MODEL.HACK]
 TRAIN = ""
@@ -121,7 +121,7 @@ DB = "wider_val"
 FLIP = true # also eval on horizontally flipped image
 LEVEL = []
 MAX_SIZE = 2000
-MODEL = ""
+MODEL = "smallhardface.caffemodel"
 NO_CACHE = false
 NMS_THRESH = 0.4
 # NMS_METHOD: "NMS" -> traditional NMS
@@ -131,11 +131,13 @@ N_DETS_PER_MODULE = 10000
 ORIG_SIZE = false
 PYRAMID_BASE_SIZE = [800, 1200]
 PROTOTXT = "models/test_template.prototxt"
-SCALES = [100, 300, 600, 1000, 1400]
+#SCALES = [100, 300, 600, 1000, 1400]
+SCALES = [100, 300, 600, 1000]
 SCORE_THRESH = 0.002
-GPU_ID = [0,1,2,3]
+#GPU_ID = [0, 1, 2, 3]
+GPU_ID = [0]
 IOU_THRESH = 0.5
 
 [TEST.DEMO]
-ENABLE = false
+ENABLE = true
 IMAGE = "demo/demo.jpg"

@@ -8,7 +8,7 @@ if not 'lib' in sys.path:
     sys.path.insert(0, 'lib')
 from utils.get_config import cfg, cfg_from_file, cfg_from_list, get_output_dir, cfg_print, cfg_dump, cfg_table
 from train import train_net, get_training_roidb
-from test import test_net
+from test import test_net, demo
 import argparse
 import sys
 import os.path as osp
@@ -33,11 +33,11 @@ def parser():
     parser = argparse.ArgumentParser(
         'Train and test', description='Give settings')
     parser.add_argument(
-        '--train', dest='train', help='do training', default='true')
+        '--train', dest='train', help='do training', default='false')
     parser.add_argument(
         '--test', dest='test', help='do testing', default='true')
     parser.add_argument(
-        '--conf', dest='conf_file', help='provide configure file', default='')
+        '--conf', dest='conf_file', help='provide configure file', default='configs/default.toml')
     parser.add_argument(
         '--amend',
         dest='set_cfgs',
@@ -118,6 +118,7 @@ if __name__ == '__main__':
         else:
             imdb = None
             output_dir = get_output_dir("demo", cfg.NAME + '_' + cfg.LOG.TIME)
+            
 
         f = open(osp.join(output_dir, 'stderr.log'), 'w', 0)
         os.dup2(f.fileno(), sys.stderr.fileno())
@@ -125,6 +126,7 @@ if __name__ == '__main__':
 
         # Edit test prototxts
         target_test = osp.join(output_dir, 'test.prototxt')
+        
 
         manipulate_test(cfg.TEST.PROTOTXT, target_test)
 
